@@ -5,24 +5,24 @@ class RichSuggestion extends StatelessWidget {
   final VoidCallback onTap;
   final AutoCompleteItem autoCompleteItem;
 
-  RichSuggestion(this.autoCompleteItem, this.onTap);
+  const RichSuggestion(this.autoCompleteItem, this.onTap, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: InkWell(
+        onTap: onTap,
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
           child: RichText(text: TextSpan(children: getStyledTexts(context))),
         ),
-        onTap: onTap,
       ),
     );
   }
 
   List<TextSpan> getStyledTexts(BuildContext context) {
     final List<TextSpan> result = [];
-    final style = TextStyle(color: Colors.grey, fontSize: 15);
+    const style = TextStyle(color: Colors.grey, fontSize: 15);
 
     final startText =
         autoCompleteItem.text?.substring(0, autoCompleteItem.offset);
@@ -36,7 +36,7 @@ class RichSuggestion extends StatelessWidget {
       TextSpan(
           text: boldText,
           style: style.copyWith(
-              color: Theme.of(context).textTheme.bodyText1?.color)),
+              color: Theme.of(context).textTheme.bodyLarge?.color)),
     );
 
     final remainingText = autoCompleteItem.text

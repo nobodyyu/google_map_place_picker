@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_map_place_picker/google_map_place_picker.dart';
+import 'package:google_map_place_picker/utils/models.dart';
+import 'package:google_map_place_picker/widget/location_picker.dart';
 
 void main() {
   runApp(
@@ -36,7 +37,7 @@ class _MyAppState extends State<MyApp> {
                         autoCompleteRegion: "in",
                         autoCompleteComponents: "country:in",
                         autoTheme: true,
-                        pinColor: Colors.amber[900])));
+                        pinColor: Colors.amber[900]!)));
 
             // Handle the result in your way
             print(result?.formattedAddress);
